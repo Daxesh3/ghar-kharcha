@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile = false, onClose }) => {
             <div className={`p-3 ${mobile ? '' : 'pt-6'}`}>
                 <div className={`${mobile ? 'hidden' : 'mb-8 mx-4'}`}>
                     <h1 className='text-xl font-semibold text-gray-800'>Ghar Kharcha</h1>
-                    <p className='text-sm text-gray-500 mt-1'>Paise udte hain? Hum pakad ke bithaayenge!</p>
+                    <p className='text-sm text-gray-500 mt-1'>Ab kharche pe full control, AI banaye smart goal</p>
                 </div>
 
                 <nav className='mt-4 space-y-1'>

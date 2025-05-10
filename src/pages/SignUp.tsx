@@ -75,7 +75,7 @@ const SignUp: React.FC = () => {
                                     </div>
                                 </div>
                                 <h2 className='text-center text-3xl font-bold text-gray-900'>Ghar Kharcha</h2>
-                                <p className='mt-2 text-center text-gray-600 text-base'>Paise udte hain? Hum pakad ke bithaayenge!</p>
+                                <p className='mt-2 text-center text-gray-600 text-base'>Ab kharche pe full control, AI banaye smart goal</p>
                             </div>
                             <form className='space-y-4' onSubmit={handleSubmit}>
                                 {error && (
