@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { PiggyBank } from 'lucide-react';
+import logo from "./../assets/images/logo.svg"
 
 const SignUp: React.FC = () => {
   const { signUp } = useAuth();
@@ -46,15 +46,15 @@ const SignUp: React.FC = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center mb-6">
-          <div className="h-16 w-16 bg-primary-600 rounded-lg flex items-center justify-center text-white">
-            <PiggyBank size={32} />
+          <div className="h-16 w-16 bg-primary-600 rounded-lg flex items-center justify-center text-white overflow-hidden">
+             <img src={logo} alt='logo' className='size-full' />
           </div>
         </div>
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
           Create your account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Join Family Finance and start managing your household expenses
+          Join Ghar Karcha and start managing your household expenses
         </p>
       </div>
 

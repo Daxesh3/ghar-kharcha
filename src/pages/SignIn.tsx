@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { CreditCard, PiggyBank, ChevronRight } from 'lucide-react';
+import logo from "./../assets/images/logo.svg"
 
 const SignIn: React.FC = () => {
   const { signIn } = useAuth();
@@ -9,12 +10,12 @@ const SignIn: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
-    
+
     try {
       await signIn(email, password);
     } catch (error) {
@@ -24,17 +25,17 @@ const SignIn: React.FC = () => {
       setLoading(false);
     }
   };
-  
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center mb-6">
-          <div className="h-16 w-16 bg-primary-600 rounded-lg flex items-center justify-center text-white">
-            <PiggyBank size={32} />
+          <div className="h-16 w-16 bg-primary-600 rounded-lg flex items-center justify-center text-white overflow-hidden">
+            <img src={logo} alt='logo' className='size-full' />
           </div>
         </div>
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
-          Family Finance
+          Ghar Karcha
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Manage your household expenses with ease
@@ -53,7 +54,7 @@ const SignIn: React.FC = () => {
                 </div>
               </div>
             )}
-            
+
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
@@ -142,7 +143,7 @@ const SignIn: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Features */}
       <div className="mt-10 mx-auto max-w-2xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 sm:px-0">
@@ -159,7 +160,7 @@ const SignIn: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-5 rounded-lg shadow-sm">
             <div className="flex items-start">
               <div className="bg-primary-50 p-2 rounded-lg">
@@ -173,7 +174,7 @@ const SignIn: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-5 rounded-lg shadow-sm">
             <div className="flex items-start">
               <div className="bg-primary-50 p-2 rounded-lg">

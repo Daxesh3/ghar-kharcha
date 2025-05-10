@@ -13,11 +13,11 @@
   --primary-700: #2563EB;
   --primary-800: #1D4ED8;
   --primary-900: #1E40AF;
-  
+
   --success-500: #63B995;
   --warning-500: #F9C784;
   --error-500: #EF4444;
-  
+
   --gray-50: #F9FAFB;
   --gray-100: #F3F4F6;
   --gray-200: #E5E7EB;
@@ -37,10 +37,17 @@
 
   body {
     @apply bg-gray-50 text-gray-800;
+    font-family: "Merriweather", serif;
+    /* font-family: "Noto Sans", sans-serif; */
   }
 
   /* Typography */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-semibold leading-tight;
   }
 
@@ -112,23 +119,42 @@
   }
 
   .scale-in {
-    @apply animate-[scaleIn_0.3s_cubic-bezier(0.175,0.885,0.32,1.275)];
+    @apply animate-[scaleIn_0.3s_cubic-bezier(0.175, 0.885, 0.32, 1.275)];
   }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes scaleIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Custom scrollbar */

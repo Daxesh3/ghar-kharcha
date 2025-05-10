@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
           
           <div className="ml-4 md:ml-0">
             <div className="text-lg md:text-xl font-semibold text-gray-800">
-              Family Finance
+              Ghar Karcha
             </div>
             <div className="text-sm text-gray-500 hidden md:block">
               Manage your household expenses

@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/favicon.svg', 'icons/apple-touch-icon.png', 'robots.txt'],
       manifest: {
-        name: 'Family Finance',
-        short_name: 'FamFinance',
+        name: 'Ghar Karcha',
+        short_name: 'GharKarcha',
         description: 'Manage your household expenses with ease',
         theme_color: '#4F86C6',
         icons: [
