@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
-import { 
-  Calendar, 
-  Clock, 
-  Check, 
-  X, 
-  Tag, 
-  User, 
+import {
+  Calendar,
+  Clock,
+  Check,
+  X,
+  Tag,
+  User,
   Plus,
   ChevronDown,
   CheckCircle
@@ -53,7 +53,7 @@ const AddExpense: React.FC = () => {
   const [currentTag, setCurrentTag] = useState('');
   const [tags, setTags] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<ExpenseCategory>('food');
-  
+
   const { register, handleSubmit, control, formState: { errors }, setValue, reset } = useForm<ExpenseFormData>({
     defaultValues: {
       amount: 0,
@@ -66,7 +66,7 @@ const AddExpense: React.FC = () => {
       tags: []
     }
   });
-  
+
   const handleAddTag = () => {
     if (currentTag.trim() && !tags.includes(currentTag.trim())) {
       const newTags = [...tags, currentTag.trim()];
@@ -75,13 +75,13 @@ const AddExpense: React.FC = () => {
       setCurrentTag('');
     }
   };
-  
+
   const handleRemoveTag = (tagToRemove: string) => {
     const newTags = tags.filter(tag => tag !== tagToRemove);
     setTags(newTags);
     setValue('tags', newTags);
   };
-  
+
   const onSubmit = async (data: ExpenseFormData) => {
     try {
       await addExpense({
@@ -91,11 +91,11 @@ const AddExpense: React.FC = () => {
         tags: tags,
         category: selectedCategory,
       } as Omit<Expense, 'id' | 'createdAt' | 'updatedAt'>);
-      
+
       // Show success message
       reset();
       setTags([]);
-      
+
       // Redirect to dashboard after a short delay to show success animation
       setTimeout(() => {
         navigate('/');
@@ -104,16 +104,16 @@ const AddExpense: React.FC = () => {
       console.error('Error adding expense:', error);
     }
   };
-  
+
   const CategoryIcon = getCategoryIcon(selectedCategory);
-  
+
   return (
     <div className="max-w-2xl mx-auto py-6">
       <div className="mb-6">
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">Add Expense</h1>
         <p className="text-gray-500 mt-1">Record your spending with all the details</p>
       </div>
-      
+
       <div className="card p-6">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Amount Field */}
@@ -134,7 +134,7 @@ const AddExpense: React.FC = () => {
             </div>
             {errors.amount && <p className="mt-1 text-sm text-error-500">{errors.amount.message}</p>}
           </div>
-          
+
           {/* Description Field */}
           <div>
             <label htmlFor="description" className="input-label">Description</label>
@@ -147,7 +147,7 @@ const AddExpense: React.FC = () => {
             />
             {errors.description && <p className="mt-1 text-sm text-error-500">{errors.description.message}</p>}
           </div>
-          
+
           {/* Category Field */}
           <div>
             <label htmlFor="category" className="input-label">Category</label>
@@ -158,11 +158,10 @@ const AddExpense: React.FC = () => {
                   <button
                     key={category.value}
                     type="button"
-                    className={`flex items-center p-3 border rounded-lg transition-colors ${
-                      selectedCategory === category.value
+                    className={`flex items-center p-3 border rounded-lg transition-colors ${selectedCategory === category.value
                         ? 'border-primary-600 bg-primary-50 text-primary-700'
                         : 'border-gray-300 hover:bg-gray-50'
-                    }`}
+                      }`}
                     onClick={() => {
                       setSelectedCategory(category.value);
                       setValue('category', category.value);
@@ -178,7 +177,7 @@ const AddExpense: React.FC = () => {
               })}
             </div>
           </div>
-          
+
           {/* Date Field */}
           <div>
             <label htmlFor="date" className="input-label">Date</label>
@@ -194,7 +193,7 @@ const AddExpense: React.FC = () => {
               />
             </div>
           </div>
-          
+
           {/* Family Member Field */}
           <div>
             <label htmlFor="familyMemberId" className="input-label">Family Member</label>
@@ -222,7 +221,7 @@ const AddExpense: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Planned vs Unplanned Toggle */}
           <div>
             <span className="input-label">Expense Type</span>
@@ -232,51 +231,57 @@ const AddExpense: React.FC = () => {
                   name="isPlanned"
                   control={control}
                   render={({ field }) => (
-                    <input
-                      type="radio"
-                      className="hidden"
-                      {...field}
-                      checked={field.value === true}
-                      onChange={() => field.onChange(true)}
-                    />
+                    <>
+                      <input
+                        type="radio"
+                        className="hidden"
+                        {...field}
+                        checked={field.value === true}
+                        onChange={() => field.onChange(true)}
+                      />
+                      <div
+                        className={`flex items-center px-3 py-2 border rounded-lg ${field.value
+                            ? 'bg-success-500/10 border-success-500 text-success-500'
+                            : 'bg-white border-gray-300 text-gray-500'
+                          }`}
+                      >
+                        <Check size={18} className="mr-2" />
+                        <span>Planned</span>
+                      </div>
+                    </>
                   )}
                 />
-                <div className={`flex items-center px-3 py-2 border rounded-lg ${
-                  register('isPlanned').value
-                    ? 'bg-success-500/10 border-success-500 text-success-500'
-                    : 'bg-white border-gray-300 text-gray-500'
-                }`}>
-                  <Check size={18} className="mr-2" />
-                  <span>Planned</span>
-                </div>
               </label>
-              
+
               <label className="flex items-center">
                 <Controller
                   name="isPlanned"
                   control={control}
                   render={({ field }) => (
-                    <input
-                      type="radio"
-                      className="hidden"
-                      {...field}
-                      checked={field.value === false}
-                      onChange={() => field.onChange(false)}
-                    />
+                    <>
+                      <input
+                        type="radio"
+                        className="hidden"
+                        {...field}
+                        checked={field.value === false}
+                        onChange={() => field.onChange(false)}
+                      />
+                      <div
+                        className={`flex items-center px-3 py-2 border rounded-lg ${!field.value
+                            ? 'bg-warning-500/10 border-warning-500 text-warning-500'
+                            : 'bg-white border-gray-300 text-gray-500'
+                          }`}
+                      >
+                        <X size={18} className="mr-2" />
+                        <span>Unplanned</span>
+                      </div>
+                    </>
                   )}
                 />
-                <div className={`flex items-center px-3 py-2 border rounded-lg ${
-                  !register('isPlanned').value
-                    ? 'bg-warning-500/10 border-warning-500 text-warning-500'
-                    : 'bg-white border-gray-300 text-gray-500'
-                }`}>
-                  <X size={18} className="mr-2" />
-                  <span>Unplanned</span>
-                </div>
               </label>
             </div>
           </div>
-          
+
           {/* Recurring Toggle */}
           <div>
             <div className="flex items-center">
@@ -300,7 +305,7 @@ const AddExpense: React.FC = () => {
                 <span className="ml-3 text-sm font-medium text-gray-700">Recurring Expense</span>
               </label>
             </div>
-            
+
             {isRecurring && (
               <div className="mt-3">
                 <label htmlFor="recurringFrequency" className="input-label">Frequency</label>
@@ -325,7 +330,7 @@ const AddExpense: React.FC = () => {
               </div>
             )}
           </div>
-          
+
           {/* Tags Input */}
           <div>
             <label htmlFor="tags" className="input-label">Tags</label>
@@ -357,12 +362,12 @@ const AddExpense: React.FC = () => {
                 <Plus size={20} />
               </button>
             </div>
-            
+
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-3">
                 {tags.map((tag) => (
-                  <span 
-                    key={tag} 
+                  <span
+                    key={tag}
                     className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800"
                   >
                     {tag}
@@ -378,7 +383,7 @@ const AddExpense: React.FC = () => {
               </div>
             )}
           </div>
-          
+
           {/* Submit Button */}
           <div className="flex pt-2">
             <button
