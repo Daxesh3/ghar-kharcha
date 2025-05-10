@@ -39,8 +39,6 @@ const SignIn: React.FC = () => {
         >
             <div className='absolute inset-0 bg-black opacity-30'></div>
             <div className='relative z-10'>
-
-
                 <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
                     <div className='bg-white/60 py-8 px-4 shadow sm:rounded-lg sm:px-10 backdrop-blur-sm'>
                         <div className='sm:mx-auto sm:w-full sm:max-w-md mb-4'>
@@ -49,7 +47,7 @@ const SignIn: React.FC = () => {
                                     <img src={logo} alt='logo' className='size-full' />
                                 </div>
                             </div>
-                            <h2 className='text-center text-3xl font-bold text-gray-900'>Ghar Karcha</h2>
+                            <h2 className='text-center text-3xl font-bold text-gray-900'>Ghar Kharcha</h2>
                             <p className='mt-2 text-center text-gray-600 text-base'>Paise udte hain? Hum pakad ke bithaayenge!</p>
                         </div>
                         <form className='space-y-4' onSubmit={handleSubmit}>

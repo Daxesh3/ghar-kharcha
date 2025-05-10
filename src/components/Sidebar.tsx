@@ -33,7 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile = false, onClose }) => {
         <div className={`flex flex-col h-full ${mobile ? 'w-64' : 'w-64'} bg-white border-r border-gray-200`}>
             {mobile && (
                 <div className='flex items-center justify-between p-4 border-b border-gray-200'>
-                    <h2 className='text-xl font-semibold text-gray-800'>Ghar Karcha</h2>
+                    <h2 className='text-xl font-semibold text-gray-800'>Ghar Kharcha</h2>
                     <button onClick={onClose} className='p-1 rounded-lg text-gray-600 hover:bg-gray-100' aria-label='Close sidebar'>
                         <X size={20} />
                     </button>
@@ -42,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile = false, onClose }) => {
 
             <div className={`p-3 ${mobile ? '' : 'pt-6'}`}>
                 <div className={`${mobile ? 'hidden' : 'mb-8 mx-4'}`}>
-                    <h1 className='text-xl font-semibold text-gray-800'>Ghar Karcha</h1>
+                    <h1 className='text-xl font-semibold text-gray-800'>Ghar Kharcha</h1>
                     <p className='text-sm text-gray-500 mt-1'>Paise udte hain? Hum pakad ke bithaayenge!</p>
                 </div>
 

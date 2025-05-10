@@ -49,16 +49,19 @@ const Dashboard: React.FC = () => {
 
     // Fetch expense summary
     useEffect(() => {
+        console.log('as');
+
         const fetchSummary = async () => {
             const { startDate, endDate } = getDateRange();
             const summaryData = await getExpenseSummary(startDate, endDate);
+            console.log(' summaryData:', summaryData);
             setSummary(summaryData);
         };
 
         if (!loading) {
             fetchSummary();
         }
-    }, [loading, period, getExpenseSummary, getDateRange]);
+    }, [loading, period, getExpenseSummary]);
 
     // Prepare chart data
     const pieChartData = Object.entries(summary.byCategory || {}).map(([category, amount]) => ({
@@ -86,10 +89,9 @@ const Dashboard: React.FC = () => {
 
         return Math.min(Math.round((summary.totalAmount / totalBudgetForPeriod) * 100), 100);
     })();
-
     // Get recently added expenses
     const recentExpenses = expenses.slice(0, 5);
-
+    const percentage = summary.plannedAmount > 0 ? ((summary.totalAmount / summary.plannedAmount) * 100).toFixed(0) : 0;
     return (
         <div className='space-y-8 pb-16 md:pb-6'>
             <div className='flex items-center justify-between'>
@@ -150,7 +152,7 @@ const Dashboard: React.FC = () => {
                                 ) : (
                                     <ArrowDownRight size={14} className='mr-1' />
                                 )}
-                                <span>{Math.abs(((summary.totalAmount - 0) / 1) * 100).toFixed(0)}%</span>
+                                <span>{percentage}%</span>
                             </span>
                             <span className='text-xs text-gray-500 ml-2'>vs target</span>
                         </div>

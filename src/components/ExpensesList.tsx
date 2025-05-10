@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { Expense } from '../types';
 import { getCategoryIcon } from '../utils/icons';
 import { useExpenses } from '../context/ExpenseContext';
+import { Edit } from 'lucide-react';
 
 interface ExpensesListProps {
     expenses: Expense[];
@@ -53,9 +54,9 @@ const ExpensesList: React.FC<ExpensesListProps> = ({ expenses, onEdit }) => {
                             <span className='font-medium text-gray-800'>₹{expense.amount.toLocaleString()}</span>
                             <button
                                 onClick={() => onEdit(expense)} // Trigger the edit action
-                                className='text-sm text-primary-600 hover:underline'
+                                className='text-sm text-primary-600 hover:underline ml-2'
                             >
-                                Edit
+                                <Edit size={16} className='mr-1.5' />
                             </button>
                             <div className='text-xs mt-0.5'>
                                 <span
