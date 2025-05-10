@@ -141,8 +141,6 @@ export const ExpenseProvider: React.FC<{ children: React.ReactNode }> = ({ child
     };
 
     const updateFamilyMember = async (id: string, member: Partial<Omit<FamilyMember, 'id'>>) => {
-        console.log('asdads');
-
         const memberRef = doc(db, 'familyMembers', id);
         await updateDoc(memberRef, member);
     };
