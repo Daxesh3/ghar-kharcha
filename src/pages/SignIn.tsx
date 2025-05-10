@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { CreditCard, PiggyBank, ChevronRight } from 'lucide-react';
+// import { CreditCard, PiggyBank, ChevronRight } from 'lucide-react';
 import logo from './../assets/images/logo.svg';
-import backgroundImage from '../assets/images/Background_1.png';
+// import backgroundImage from '../assets/images/Background_1.png';
+import backgroundImage from '../assets/images/auth-banner.jpg';
 
 const SignIn: React.FC = () => {
     const { signIn } = useAuth();
@@ -29,7 +30,7 @@ const SignIn: React.FC = () => {
 
     return (
         <div
-            className='min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8'
+            className='h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 overflow-auto'
             style={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: 'cover',
@@ -38,19 +39,20 @@ const SignIn: React.FC = () => {
         >
             <div className='absolute inset-0 bg-black opacity-30'></div>
             <div className='relative z-10'>
-                <div className='sm:mx-auto sm:w-full sm:max-w-md'>
-                    <div className='flex justify-center mb-6'>
-                        <div className='h-16 w-16 bg-primary-600 rounded-lg flex items-center justify-center text-white overflow-hidden'>
-                            <img src={logo} alt='logo' className='size-full' />
-                        </div>
-                    </div>
-                    <h2 className='mt-2 text-center text-3xl font-bold text-gray-900'>Ghar Karcha</h2>
-                    <p className='mt-2 text-center text-sm text-gray-600'>Manage your household expenses with ease</p>
-                </div>
+
 
                 <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-                    <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
-                        <form className='space-y-6' onSubmit={handleSubmit}>
+                    <div className='bg-white/60 py-8 px-4 shadow sm:rounded-lg sm:px-10 backdrop-blur-sm'>
+                        <div className='sm:mx-auto sm:w-full sm:max-w-md mb-4'>
+                            <div className='flex justify-center mb-2'>
+                                <div className='h-16 w-16 bg-primary-600 rounded-lg flex items-center justify-center text-white overflow-hidden'>
+                                    <img src={logo} alt='logo' className='size-full' />
+                                </div>
+                            </div>
+                            <h2 className='text-center text-3xl font-bold text-gray-900'>Ghar Karcha</h2>
+                            <p className='mt-2 text-center text-gray-600 text-base'>Paise udte hain? Hum pakad ke bithaayenge!</p>
+                        </div>
+                        <form className='space-y-4' onSubmit={handleSubmit}>
                             {error && (
                                 <div className='rounded-md bg-error-50 p-4'>
                                     <div className='flex'>
@@ -128,11 +130,10 @@ const SignIn: React.FC = () => {
 
                         <div className='mt-6'>
                             <div className='relative'>
-                                <div className='absolute inset-0 flex items-center'>
-                                    <div className='w-full border-t border-gray-300'></div>
-                                </div>
-                                <div className='relative flex justify-center text-sm'>
-                                    <span className='px-2 bg-white text-gray-500'>Or</span>
+                                <div className='relative flex justify-center text-sm gap-3 items-center'>
+                                    <div className='border-b border-gray w-full'></div>
+                                    <span className='px-2 text-gray'>OR</span>
+                                    <div className='border-b border-gray w-full'></div>
                                 </div>
                             </div>
 
@@ -149,7 +150,7 @@ const SignIn: React.FC = () => {
                 </div>
 
                 {/* Features */}
-                <div className='mt-10 mx-auto max-w-2xl'>
+                {/* <div className='mt-10 mx-auto max-w-2xl'>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-6 px-4 sm:px-0'>
                         <div className='bg-white p-5 rounded-lg shadow-sm'>
                             <div className='flex items-start'>
@@ -187,7 +188,7 @@ const SignIn: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
