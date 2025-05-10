@@ -19,6 +19,7 @@ import NotFound from './pages/NotFound';
 
 // PWA
 import { registerSW } from './utils/pwa';
+import Budgets from './pages/Budgets';
 
 const App: React.FC = () => {
     const { currentUser, loading } = useAuth();
@@ -47,6 +48,7 @@ const App: React.FC = () => {
                 <Route path='reports' element={<Reports />} />
                 <Route path='suggestions' element={<Suggestions />} />
                 <Route path='family' element={<FamilyMembers />} />
+                <Route path='budgets' element={<Budgets />} />
                 <Route path='settings' element={<Settings />} />
             </Route>
 
