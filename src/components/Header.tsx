@@ -20,6 +20,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
           >
             <Menu size={24} />
           </button>
+          <h1 className='md:hidden text-lg'>GharKhrcha</h1>
         </div>
         
         <div className="hidden md:flex items-center bg-gray-100 rounded-full px-3 py-1.5 flex-1 max-w-md mx-6">
